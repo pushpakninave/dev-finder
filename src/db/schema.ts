@@ -1,20 +1,22 @@
+import { sql } from "drizzle-orm";
 import {
-  pgTable, 
+  pgTable,
   text,
   boolean,
   timestamp,
   primaryKey,
   integer,
+  uuid,
 } from "drizzle-orm/pg-core"
 import { drizzle } from "drizzle-orm/postgres-js"
 import type { AdapterAccount } from "next-auth/adapters"
- 
+
 
 export const testing = pgTable("testing", {
   id: text("id").notNull().primaryKey(),
   name: text("name"),
 });
- 
+
 export const users = pgTable("user", {
   id: text("id")
     .primaryKey()
@@ -24,7 +26,7 @@ export const users = pgTable("user", {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 })
- 
+
 export const accounts = pgTable(
   "account",
   {
@@ -48,7 +50,7 @@ export const accounts = pgTable(
     }),
   })
 )
- 
+
 export const sessions = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
@@ -56,7 +58,7 @@ export const sessions = pgTable("session", {
     .references(() => users.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
- 
+
 export const verificationTokens = pgTable(
   "verificationToken",
   {
@@ -70,7 +72,7 @@ export const verificationTokens = pgTable(
     }),
   })
 )
- 
+
 export const authenticators = pgTable(
   "authenticator",
   {
@@ -91,3 +93,18 @@ export const authenticators = pgTable(
     }),
   })
 )
+
+export const room = pgTable("room", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .notNull()
+    .primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  Language: text("language").notNull(),
+  githubRepo: text("githubRepo")
+})
+
+export type Room = typeof room.$inferSelect;

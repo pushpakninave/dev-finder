@@ -48,3 +48,6 @@ to be specific if you start Drizzle studio
 npx drizzle-kit studio
 ```
 you might see that it gets stucks on page saying `Connecting to the Drizzle Kit on localhost:4983` in that case got to `node_modules/drizzle-kit/bin.cjs` and remove `await certs() ||` try restarting studio again.
+
+# Learnings:
+1. Type Inference
