@@ -16,11 +16,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { createRoomAction } from "@/lib/actions";
 import { useRouter } from "next/navigation";
+import { debounce } from 'lodash';
 
 const formSchema = z.object({
     name: z.string().min(1).max(50),
     description: z.string().min(1).max(250),
-    githubRepo: z.string().min(1).max(50),
+    githubRepo: z.string().min(1).max(150),
     Language: z.string().min(1).max(50),
 })
 
@@ -43,10 +44,12 @@ function CreateRoomForm() {
         router.push(`/`);
     }
 
+    const debouncedOnSubmit = debounce(onSubmit, 300); 
+
     return (
         <div className="container mx-auto">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(debouncedOnSubmit)} className="space-y-8">
                     <FormField
                         control={form.control}
                         name="name"
