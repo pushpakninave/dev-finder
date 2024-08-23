@@ -22,7 +22,7 @@ const formSchema = z.object({
     name: z.string().min(1).max(50),
     description: z.string().min(1).max(250),
     githubRepo: z.string().min(1).max(150),
-    Language: z.string().min(1).max(50),
+    tags: z.string().min(1).max(50),
 })
 
 function CreateRoomForm() {
@@ -35,7 +35,7 @@ function CreateRoomForm() {
             name: "",
             description: "",
             githubRepo: "",
-            Language: ""
+            tags: ""
         },
     })
 
@@ -107,7 +107,7 @@ function CreateRoomForm() {
 
                     <FormField
                         control={form.control}
-                        name="Language"
+                        name="tags"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Tags</FormLabel>

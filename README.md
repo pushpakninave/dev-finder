@@ -49,5 +49,11 @@ npx drizzle-kit studio
 ```
 you might see that it gets stucks on page saying `Connecting to the Drizzle Kit on localhost:4983` in that case got to `node_modules/drizzle-kit/bin.cjs` and remove `await certs() ||` try restarting studio again.
 
+
+# playing with docker
+1. list containers: `docker ps`
+2. accessing docker : `docker exec -it dev-finder-db psql -U postgres`
+3. deleting table: `DROP TABLE IF EXISTS authenticator;`
+
 # Learnings:
 1. Type Inference
