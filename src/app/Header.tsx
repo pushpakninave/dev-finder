@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DeleteIcon, LogInIcon, LogOutIcon } from "lucide-react";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import {
@@ -22,7 +21,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 import { deleteAccountAction } from "../lib/actions";
@@ -48,7 +46,7 @@ function AccountDropdown() {
             <AlertDialogAction
               onClick={async () => {
                 await deleteAccountAction();
-                signOut({ callbackUrl: "/" });
+                // signOut({ callbackUrl: "/" });
               }}
             >
               Yes, delete my account
@@ -62,7 +60,7 @@ function AccountDropdown() {
           <Button variant={"link"} className="flex items-center justify-center">
             <Avatar className="xs:mr-0 mr-2">
               <AvatarImage src={session.data?.user?.image ?? ""} />
-              <AvatarFallback className=" dark:text-white  text-black">CN</AvatarFallback>
+              <AvatarFallback className=" dark:text-white text-black">CN</AvatarFallback>
             </Avatar>
             <p className="hidden md:flex xl:flex">{session.data?.user?.name}</p>
           </Button>
@@ -98,7 +96,7 @@ export function Header() {
   const isLoggedIn = !!session.data;
 
   return (
-    <header className="text-[#db4a2b] dark:text-[#e4e2dd] bg-orange-200 py-2 dark:bg-[#db4a2b] z-10 relative">
+    <header className="text-bg-indigo-600 dark:text-[#e4e2dd] bg-indigo-200 py-2 dark:bg-indigo-600 z-10 relative mx-5 my-4 glassmorph">
       <div className="container pl-3 pr-0 mx-auto flex justify-between items-center">
         <Link
           href="/"

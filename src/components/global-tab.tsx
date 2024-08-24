@@ -1,18 +1,36 @@
+'use client'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { cn } from "@/lib/utils";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { ModeToggle } from "./mode-toggle";
 
 
 function GlobalTabs() {
-    return (
-        <div className="container mx-auto flex justify-center">
+    const pathName = usePathname();
+    const defaultTab = pathName === "/your-rooms" ? "yourRooms" : "allRooms";
 
-            <Tabs defaultValue="account" className="mt-5">
-                <TabsList className="bg-[#e4e2dd]">
-                    <TabsTrigger value="account">Account</TabsTrigger>
-                    <TabsTrigger value="password">Password</TabsTrigger>
-                </TabsList>
-                {/* <TabsContent value="account">Make changes to your account here.</TabsContent>
-                <TabsContent value="password">Change your password here.</TabsContent> */}
-            </Tabs>
+    const isHomeTab = pathName === "/"
+
+    return (
+
+        <div className="container mx-auto flex justify-center items-center">
+            <div className={cn("", { "hidden": isHomeTab })}>
+                <Tabs value={defaultTab} className="mt-5">
+                    <TabsList className="bg-[#e4e2dd]">
+                        <Link href="/browse"><TabsTrigger value="allRooms">All Rooms</TabsTrigger></Link>
+                        <Link href="/your-rooms"><TabsTrigger value="yourRooms">Your Rooms</TabsTrigger></Link>
+                    </TabsList>
+                </Tabs>
+            </div>
+            <div className="flex justify-end w-full md:hidden mt-5">
+                <div className="p-2 rounded-sm backdrop-blur-saturate bg-[rgba(123,130,145,0.75)] border border-[rgba(255,255,255,0.125)]">
+                    <ModeToggle />
+                </div>
+            </div>
+            {/* <div>
+
+            </div> */}
 
         </div>
     )

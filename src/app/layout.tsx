@@ -5,6 +5,8 @@ import { Providers } from "./provider";
 import { Header } from "./Header";
 import GlobalTabs from "@/components/global-tab";
 import NextTopLoader from 'nextjs-toploader';
+import { ModeToggle } from "@/components/mode-toggle";
+import { Toaster } from "@/components/ui/toaster";
 
 const anekDevanagari = Anek_Devanagari({
   subsets: ['devanagari']
@@ -24,10 +26,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={anekDevanagari.className}>
         <Providers>
-          {/* <Toaster /> */}
+          <Toaster />
           <NextTopLoader />
           <Header />
-          <GlobalTabs />
+          <GlobalTabs/>
           <div className="container mx-auto">{children}</div>
         </Providers>
       </body>

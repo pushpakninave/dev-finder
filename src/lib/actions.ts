@@ -1,12 +1,12 @@
 'use server'
 
 import { db } from "@/db";
-import { Room, room } from "@/db/schema";
+import { Room, room, users } from "@/db/schema";
 import { getSession } from "./auth";
 import { revalidatePath, unstable_noStore } from "next/cache";
-import { eq, like, SQL, sql } from "drizzle-orm";
+import { eq, SQL, sql } from "drizzle-orm";
 import { StreamChat } from "stream-chat";
-import { AnyPgColumn } from "drizzle-orm/pg-core";
+import { redirect } from "next/navigation";
 
 export async function createRoomAction(roomData: Omit<Room, 'id' | 'userId'>) {
     const session = await getSession();
@@ -15,6 +15,20 @@ export async function createRoomAction(roomData: Omit<Room, 'id' | 'userId'>) {
     }
     await db.insert(room).values({ ...roomData, userId: session.user.id })
     revalidatePath("/");
+}
+
+export async function editRoomAction(roomData: Omit<Room, 'userId'>) {
+    const session = await getSession();
+    if (!session) {
+        throw new Error("You must be logged in to edit this room.")
+    }
+
+    await db.update(room).set(roomData).where(eq(room.id, roomData.id)).returning();
+
+    revalidatePath("/your-rooms");
+    revalidatePath("/");
+    revalidatePath(`/edit-room/${room.id}`);
+    redirect("/your-rooms");
 }
 
 export async function getRooms(query: string | undefined) {
@@ -40,7 +54,37 @@ export async function getRoomInfoById(roomId: string) {
     return roomInfo;
 }
 
-export async function deleteAccountAction() { }
+export async function getUserRooms() {
+    unstable_noStore();
+    const session = await getSession();
+
+    if (!session) {
+        throw new Error("user not authenticated");
+    }
+    const userId = session.user.id;
+
+    const userRoomsInfo = await db.query.room.findMany({
+        where: eq(room.userId, session.user.id),
+    })
+
+    return userRoomsInfo;
+}
+
+export async function deleteAccountAction() {
+    const session = await getSession();
+
+    await db.delete(users).where(eq(users.id, session?.user.id as string));
+}
+
+export async function deleteRoomAction(roomId: string) {
+    const session = await getSession();
+
+    if (!session) {
+        throw new Error("You must be logged in to delete this room.")
+    }
+    await db.delete(room).where(eq(room.id, roomId));
+    revalidatePath("/your-rooms");
+}
 
 export async function generateTokenForVideo() {
     const session = await getSession();

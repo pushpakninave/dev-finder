@@ -1,12 +1,10 @@
 import { TagsList } from '@/components/taglist'
-import { Badge } from '@/components/ui/badge'
 import { getRoomInfoById } from '@/lib/actions'
 import { splitTags } from '@/lib/utils'
 import { GithubIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { DevFinderVideo } from './videoplayer'
-import { room } from '@/db/schema'
 
 async function Roompage(roomInfo: { params: { roomId: string } }) {
     const roomInfoById = await getRoomInfoById(roomInfo.params.roomId)
