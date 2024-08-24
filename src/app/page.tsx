@@ -33,7 +33,7 @@ export default function Home() {
             <p className="mt-6 text-lg leading-8 dark:text-gray-300 text-gray-600">
               <Link href={githubUrl} target='_blank' className='text-indigo-600 group'>
                 DevCommit 
-              </Link> is your go-to platform for seamless developer collaboration. Whether you're debugging code, brainstorming features, or working on a project together, DevCommit lets you create online rooms where you can collaborate with fellow developers via video calls.
+              </Link> is your go-to platform for seamless developer collaboration. Whether you&apos;re debugging code, brainstorming features, or working on a project together, DevCommit lets you create online rooms where you can collaborate with fellow developers via video calls.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/browse" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
