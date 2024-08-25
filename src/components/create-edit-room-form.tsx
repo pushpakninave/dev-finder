@@ -101,7 +101,7 @@ export function CreateRoomForm() {
                                 <FormControl>
                                     <Input
                                         {...field}
-                                        placeholder="https://github.com/pushpakninave/dev-finder"
+                                        placeholder="https://github.com/username/repo_name"
                                     />
                                 </FormControl>
                                 <FormDescription>
@@ -207,7 +207,7 @@ export function EditRoomForm({ roomInfo }: { roomInfo: Room }) {
                                 <FormControl>
                                     <Input
                                         {...field}
-                                        placeholder="https://github.com/pushpakninave/dev-finder"
+                                        placeholder="https://github.com/username/repo_name"
                                     />
                                 </FormControl>
                                 <FormDescription>

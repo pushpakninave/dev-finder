@@ -55,5 +55,10 @@ you might see that it gets stucks on page saying `Connecting to the Drizzle Kit 
 2. accessing docker : `docker exec -it dev-finder-db psql -U postgres`
 3. deleting table: `DROP TABLE IF EXISTS authenticator;`
 
+# ipv6 issues
+1. `sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1`
+2. `sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1`
+3. `sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1`
+
 # Learnings:
 1. Type Inference
