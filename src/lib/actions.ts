@@ -34,6 +34,11 @@ export async function editRoomAction(roomData: Omit<Room, 'userId'>) {
 export async function getRooms(query: string | undefined) {
     // every time a page loads or gets revalidate it will fetch data without storing cache.
     unstable_noStore();
+    const session = await getSession();
+
+    if (!session) {
+        throw new Error("user not authenticated");
+    }
 
     // execute (where) only if query is defined else make it undefined.
     const where = query ? sql`lower(${room.tags}) like ${`%${query.toLowerCase()}%`}` : undefined
@@ -46,6 +51,11 @@ export async function getRooms(query: string | undefined) {
 
 export async function getRoomInfoById(roomId: string) {
     unstable_noStore();
+    const session = await getSession();
+
+    if (!session) {
+        throw new Error("user not authenticated");
+    }
     const roomInfo = await db.query.room.findFirst(
         {
             where: eq(room.id, roomId),
