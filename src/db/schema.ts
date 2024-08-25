@@ -8,7 +8,6 @@ import {
   integer,
   uuid,
 } from "drizzle-orm/pg-core"
-import { drizzle } from "drizzle-orm/postgres-js"
 import type { AdapterAccount } from "next-auth/adapters"
 
 

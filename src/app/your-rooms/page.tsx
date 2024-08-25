@@ -34,7 +34,7 @@ export default async function YourRoomsPage() {
 
                     <h2 className="text-2xl">You have no rooms</h2>
 
-                    <p className="text-lg text-slate-500 dark:text-slate-300 p-10">It looks like you haven't created any rooms yet. Click the button below to create your first room.</p>
+                    <p className="text-lg text-slate-500 dark:text-slate-300 p-10">It looks like you haven&apos;t created any rooms yet. Click the button below to create your first room.</p>
             
                 </div>
             )}
