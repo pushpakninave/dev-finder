@@ -1,8 +1,7 @@
 'use client'
 
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
-import Link from 'next/link'
-import { useState } from 'react'
+import Link from 'next/link';
 
 export default function Home() {
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL!;
@@ -21,7 +20,7 @@ export default function Home() {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-2xl pt-20 pb-10">
+        <div className="mx-auto max-w-2xl py-20">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight dark:text-white text-gray-900 sm:text-6xl">
               Collaborate with Devs in Real-Time on
@@ -42,6 +41,25 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <footer>
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-300">Connect with me:</p>
+            <div className='flex flex-row justify-center my-5'>
+              <div className="grid grid-cols-3 gap-10">
+                <Link href="https://www.linkedin.com/in/pushpak-ninave-a17328192/" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <LinkedInLogoIcon className='h-5 w-5' />
+                </Link>
+                <Link href="https://github.com/pushpakninave" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <GitHubLogoIcon className='h-5 w-5' />
+                </Link>
+                <Link href="https://x.com/PushpakN007" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <TwitterLogoIcon className='h-5 w-5' />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </footer>
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -55,24 +73,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <footer className="pt-10">
-        <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-300">Connect with me:</p>
-          <div className='flex flex-row justify-center my-5'>
-            <div className="grid grid-cols-3 gap-10">
-              <Link href="https://www.linkedin.com/in/pushpak-ninave-a17328192/" target="_blank">
-                <LinkedInLogoIcon className='h-5 w-5'/>
-              </Link>
-              <Link href="https://github.com/pushpakninave" target="_blank">
-                <GitHubLogoIcon className='h-5 w-5' />
-              </Link>
-              <Link href="https://x.com/PushpakN007" target="_blank">
-                <TwitterLogoIcon className='h-5 w-5' />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </div>
   )
 }
