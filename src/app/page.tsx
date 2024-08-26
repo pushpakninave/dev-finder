@@ -1,11 +1,10 @@
 'use client'
 
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL!;
   return (
     <div className="">
@@ -22,7 +21,7 @@ export default function Home() {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-20">
+        <div className="mx-auto max-w-2xl pt-20 pb-10">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight dark:text-white text-gray-900 sm:text-6xl">
               Collaborate with Devs in Real-Time on
@@ -32,7 +31,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 text-lg leading-8 dark:text-gray-300 text-gray-600">
               <Link href={githubUrl} target='_blank' className='text-indigo-600 group'>
-                DevCommit 
+                DevCommit
               </Link> is your go-to platform for seamless developer collaboration. Whether you&apos;re debugging code, brainstorming features, or working on a project together, DevCommit lets you create online rooms where you can collaborate with fellow developers via video calls.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -56,6 +55,24 @@ export default function Home() {
           />
         </div>
       </div>
+      <footer className="pt-10">
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-300">Connect with me:</p>
+          <div className='flex flex-row justify-center my-5'>
+            <div className="grid grid-cols-3 gap-10">
+              <Link href="https://www.linkedin.com/in/pushpak-ninave-a17328192/" target="_blank">
+                <LinkedInLogoIcon className='h-5 w-5'/>
+              </Link>
+              <Link href="https://github.com/pushpakninave" target="_blank">
+                <GitHubLogoIcon className='h-5 w-5' />
+              </Link>
+              <Link href="https://x.com/PushpakN007" target="_blank">
+                <TwitterLogoIcon className='h-5 w-5' />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
