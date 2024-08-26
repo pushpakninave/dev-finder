@@ -122,8 +122,8 @@ export function Header() {
         <div className="flex items-center gap-2">
           {isLoggedIn && <AccountDropdown />}
           {!isLoggedIn && (
-            <Button onClick={() => signIn()} className="hover:bg-yellow-50 hover:scale-105 transition-transform duration-500">
-              <LogInIcon size={20} className="mr-2" />  <p className="mt-[5px]">Sign In</p>
+            <Button onClick={() => signIn()} className="mr-2 hover:bg-yellow-50 hover:scale-105 transition-transform duration-500">
+              <LogInIcon size={20} className="mr-0 md:mr-2" />  <p className="mt-[5px] hidden md:flex">Sign In</p>
             </Button>
           )}
           <div className="hidden xl:flex md:flex px-2">
