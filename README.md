@@ -1,5 +1,5 @@
 # DevCommit
-
+![devCommit template](image-1.png)
 Welcome to **DevCommit** – a collaborative platform designed for developers to work together on projects in real-time! 🚀
 
 ## What is DevCommit?
