@@ -1,11 +1,9 @@
 'use client'
 
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import Link from 'next/link'
-import { useState } from 'react'
+import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
+import Link from 'next/link';
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL!;
   return (
     <div className="">
@@ -32,7 +30,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 text-lg leading-8 dark:text-gray-300 text-gray-600">
               <Link href={githubUrl} target='_blank' className='text-indigo-600 group'>
-                DevCommit 
+                DevCommit
               </Link> is your go-to platform for seamless developer collaboration. Whether you&apos;re debugging code, brainstorming features, or working on a project together, DevCommit lets you create online rooms where you can collaborate with fellow developers via video calls.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -43,6 +41,25 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <footer>
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-300">Connect with me:</p>
+            <div className='flex flex-row justify-center my-5'>
+              <div className="grid grid-cols-3 gap-10">
+                <Link href="https://www.linkedin.com/in/pushpak-ninave-a17328192/" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <LinkedInLogoIcon className='h-5 w-5' />
+                </Link>
+                <Link href="https://github.com/pushpakninave" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <GitHubLogoIcon className='h-5 w-5' />
+                </Link>
+                <Link href="https://x.com/PushpakN007" className='cursor-pointer' target="_blank" rel="noopener noreferrer">
+                  <TwitterLogoIcon className='h-5 w-5' />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </footer>
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -56,6 +73,7 @@ export default function Home() {
           />
         </div>
       </div>
+
     </div>
   )
 }

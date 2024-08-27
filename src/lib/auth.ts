@@ -58,7 +58,7 @@ export const authConfig = {
             return session;
         },
     },
-    secret: process.env.JWT_SECRET
+    secret: process.env.NEXTAUTH_SECRET
 } satisfies AuthOptions;
 
 export function getSession() {

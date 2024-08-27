@@ -1,3 +1,37 @@
+# DevCommit
+
+Welcome to **DevCommit** – a collaborative platform designed for developers to work together on projects in real-time! 🚀
+
+## What is DevCommit?
+
+DevCommit is a space where developers can create rooms based on their projects, allowing others to join in via video chat and collaborate on code. Whether you're working on a personal project, an open-source initiative, or just need some help debugging, DevCommit provides the tools to connect with other developers and get things done together.
+
+## Features
+
+- **Create, Edit, and Delete Rooms**: Easily manage your project rooms.
+- **Join Public Rooms**: Collaborate with other developers on open projects.
+- **Real-Time Video Conferencing**: Communicate with your team while coding together.
+- **Free Access**: Sign in, explore, and start collaborating without any cost.
+
+## Technologies Used
+
+- **[Next.js](https://nextjs.org/)**: The backbone of our project, providing a powerful and flexible framework.
+- **[Drizzle ORM](https://github.com/drizzle-team/drizzle-orm)**: Used to define and manage our database schema.
+- **[Auth.js](https://authjs.dev/)**: Ensuring smooth and secure authentication for users.
+- **[GetStream.io](https://getstream.io/)**: Integrated for seamless video conferencing capabilities.
+- **[Vercel Postgres](https://vercel.com/postgres)**: Our choice for reliable and scalable database storage.
+
+## Getting Started
+
+To get started with DevCommit, clone this repository and follow the instructions below:
+
+```bash
+git clone https://github.com/yourusername/devcommit.git
+cd devcommit
+npm install
+
+
+
 # Project Setup
 
 This project uses several packages to enhance its functionality. Below is a list of all the packages installed along with their purpose.

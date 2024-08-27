@@ -29,6 +29,8 @@ import Logo from "@/components/Logo";
 function AccountDropdown() {
   const session = useSession();
   const [open, setOpen] = useState(false);
+  const username = session.data?.user.name;
+  const initials = username ? username.slice(0, 2).toUpperCase() : '';
 
   return (
     <>
@@ -60,7 +62,7 @@ function AccountDropdown() {
           <Button variant={"link"} className="flex items-center justify-center">
             <Avatar className="xs:mr-0 mr-2">
               <AvatarImage src={session.data?.user?.image ?? ""} />
-              <AvatarFallback className=" dark:text-white text-black">CN</AvatarFallback>
+              <AvatarFallback className=" dark:text-white text-black">{initials}</AvatarFallback>
             </Avatar>
             <p className="hidden md:flex xl:flex">{session.data?.user?.name}</p>
           </Button>
@@ -122,8 +124,8 @@ export function Header() {
         <div className="flex items-center gap-2">
           {isLoggedIn && <AccountDropdown />}
           {!isLoggedIn && (
-            <Button onClick={() => signIn()} className="hover:bg-yellow-50 hover:scale-105 transition-transform duration-500">
-              <LogInIcon size={20} className="mr-2" />  <p className="mt-[5px]">Sign In</p>
+            <Button onClick={() => signIn()} className="mr-2 hover:bg-yellow-50 hover:scale-105 transition-transform duration-500">
+              <LogInIcon size={20} className="mr-0 md:mr-2" />  <p className="mt-[5px] hidden md:flex">Sign In</p>
             </Button>
           )}
           <div className="hidden xl:flex md:flex px-2">

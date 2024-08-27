@@ -13,7 +13,7 @@ const anekDevanagari = Anek_Devanagari({
 })
 
 export const metadata: Metadata = {
-  title: "Dev-finder",
+  title: "DevCommit",
   description: "An application to help pair programming with random dev out there online",
 };
 
